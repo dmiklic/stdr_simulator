@@ -4,8 +4,10 @@
 
   <node pkg="master_sync_fkie" type="master_sync" name="master_sync">
     <rosparam param="ignore_services">['/*replace', '/*list', '/*load_nodelet', '/*unload_nodelet']</rosparam>
-    <rosparam param="sync_nodes">['/robot_manager']</rosparam>
+    <rosparam param="sync_nodes">['/robot_manager','/tf_remapper']</rosparam>
     <rosparam param="ignore_topics">['/map*', '/tf*', '/stdr_server*']</rosparam>
   </node>
 
+  <node pkg="topic_tools" type="relay" name="tf_relay"
+        args="/filtered_tf /tf"/>
 </launch>
